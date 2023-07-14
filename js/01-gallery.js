@@ -44,10 +44,15 @@ function onViewFullImage(evt) {
                 src="${sourceClickedItem}"
                 alt="${descriptionImg}"             
             />        
-        `);
-    basicLightboxEl.show();
-
-    window.addEventListener('keydown', onClickEsc);
+        `, {
+        onClose: (instance) => {
+            window.removeEventListener('keydown', onClickEsc); 
+        },
+        onShow: (instance) => {
+            window.addEventListener('keydown', onClickEsc);
+        }    
+        });
+    basicLightboxEl.show();    
 }
 
 function onClickEsc(evt) {    
@@ -55,8 +60,6 @@ function onClickEsc(evt) {
     const keyClicked = evt.key;
 
     if (keyClicked === ESCAPE) {
-        basicLightboxEl.close();
-
-        window.removeEventListener('keydown', onClickEsc);
+        basicLightboxEl.close()        
     }    
 }
