@@ -22,9 +22,9 @@ const galleryItemBox = createGallery(galleryItems);
 const galleryBox = document.querySelector('.gallery');
 let basicLightboxEl;
 
-galleryBox.addEventListener('click', onViewFullImage);
-
 galleryBox.insertAdjacentHTML('afterbegin', galleryItemBox);
+
+galleryBox.addEventListener('click', onViewFullImage);
 
 function onViewFullImage(evt) {
     evt.preventDefault();
